@@ -61,10 +61,12 @@
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
+			<version>10.20.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-mysql</artifactId>
+			<version>10.20.0</version>
 		</dependency>
 
 
@@ -72,6 +74,18 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.20.0</version>
+				<configuration>
+					<url>jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true</url>
+					<user>root</user>
+					<password>Password12#</password>
+					<cleanDisabled>false</cleanDisabled>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

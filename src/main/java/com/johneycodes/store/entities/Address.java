@@ -2,12 +2,15 @@ package com.johneycodes.store.entities;
 
 import jakarta.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name="addresses")
 public class Address {
     @Id
@@ -22,4 +25,9 @@ public class Address {
     private String province;
     @Column(name = "zipcode")
     private String zipcode;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @ToString.Exclude
+    private  User user;
 }

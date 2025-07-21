@@ -6,14 +6,14 @@ spring:
     username: root
     password: Password12#
 stripe:
-  apiUrl: https://api.stripe.com
-  enabled: true
-  timeout: 1000
-  supported-currencies: ZAR,USD,GBV
+
+
+
+
 
 payment:
-  service: paypal
+
 
 server:
-  host: SMPT
+
   port: 8080

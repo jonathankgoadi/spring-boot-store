@@ -2,6 +2,7 @@ package com.johneycodes.store;
 
 
 
+import com.johneycodes.store.entities.Profile;
 import com.johneycodes.store.entities.Tag;
 import com.johneycodes.store.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -19,8 +20,13 @@ public class StoreApplication {
 				.password("password")
 				.build();
 
+		var profile = Profile.builder()
+						.bio("biosss")
+						.build();
 
-		user.addTag("tag1");
+		user.setProfile(profile);
+		profile.setUser(user);
+
 		System.out.println(user);
 
 	}

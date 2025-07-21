@@ -2,11 +2,14 @@ package com.johneycodes.store.entities;
 
 import jakarta.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Entity
 @Getter
 @Setter
@@ -24,4 +27,10 @@ public class Profile {
     private LocalDate dateOfBirth;
     @Column(name="loyalty_points")
     private int loyaltyPoints;
+
+    @OneToOne
+    @JoinColumn(name = "id")
+    @MapsId
+    @ToString.Exclude
+    private User user;
 }

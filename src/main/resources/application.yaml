@@ -5,15 +5,5 @@ spring:
     url: jdbc:mysql://localhost:3306/store?createDatabaseIfNotExist=true
     username: root
     password: Password12#
-stripe:
-
-
-
-
-
-payment:
-
-
-server:
-
-  port: 8080
+  jpa:
+    show-sql: true

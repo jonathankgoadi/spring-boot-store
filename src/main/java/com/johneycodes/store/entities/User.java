@@ -2,6 +2,7 @@ package com.johneycodes.store.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.action.internal.OrphanRemovalAction;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
 
@@ -48,6 +49,13 @@ public class User {
         tag.getUsers().add(this);
     }
 
+    public void removeTag(String tagName) {}
+
+    public void addToWishlist(Product product) {
+        wishlist.add(product);
+
+    }
+
     @ManyToMany
     @JoinTable(
             name="user_tags",
@@ -58,7 +66,7 @@ public class User {
     private Set<Tag> tags = new HashSet<>();
 
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user",cascade = CascadeType.REMOVE)
     private Profile profile;
 
     @ManyToMany

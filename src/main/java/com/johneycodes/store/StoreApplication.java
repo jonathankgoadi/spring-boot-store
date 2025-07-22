@@ -2,32 +2,28 @@ package com.johneycodes.store;
 
 
 
-import com.johneycodes.store.entities.Profile;
-import com.johneycodes.store.entities.Tag;
 import com.johneycodes.store.entities.User;
+import com.johneycodes.store.repositories.UserRepository;
+import com.johneycodes.store.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 
 @SpringBootApplication
 public class StoreApplication {
 
 	public static void main(String[] args) {
-//		ApplicationContext = SpringApplication.run(StoreApplication.class, args);
-		var user = User.builder()
-				.name("jonathan")
-				.email("jonathankgoadi@gmail.com")
-				.password("password")
-				.build();
+		ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 
-		var profile = Profile.builder()
-						.bio("biosss")
-						.build();
+		var service = context.getBean(UserService.class);
+		service.createProduct();
 
-		user.setProfile(profile);
-		profile.setUser(user);
 
-		System.out.println(user);
+
+
+
+
 
 	}
 

@@ -41,28 +41,11 @@ public class User {
         address.setUser(null);
     }
 
-    public void addTag(String tagName) {
-        var tag = new Tag(tagName);
-        tags.add(tag);
-        tag.getUsers().add(this);
-    }
-
-    public void removeTag(String tagName) {}
 
     public void addToWishlist(Product product) {
         wishlist.add(product);
 
     }
-
-    @ManyToMany
-    @JoinTable(
-            name="user_tags",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    @Builder.Default
-    private Set<Tag> tags = new HashSet<>();
-
 
     @OneToOne(mappedBy = "user",cascade = CascadeType.REMOVE)
     private Profile profile;

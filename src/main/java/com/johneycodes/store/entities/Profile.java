@@ -1,7 +1,6 @@
 package com.johneycodes.store.entities;
 
 import jakarta.persistence.*;
-
 import lombok.*;
 
 import java.time.LocalDate;
@@ -9,7 +8,6 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
 @Getter
 @Setter
@@ -28,9 +26,18 @@ public class Profile {
     @Column(name="loyalty_points")
     private int loyaltyPoints;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     @MapsId
-    @ToString.Exclude
     private User user;
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "bio = " + bio + ", " +
+                "phoneNumber = " + phoneNumber + ", " +
+                "dateOfBirth = " + dateOfBirth + ", " +
+                "loyaltyPoints = " + loyaltyPoints + ")";
+    }
 }

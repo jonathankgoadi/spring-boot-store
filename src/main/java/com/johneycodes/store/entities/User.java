@@ -47,8 +47,6 @@ public class User {
 
     }
 
-    @OneToOne(mappedBy = "user",cascade = CascadeType.REMOVE)
-    private Profile profile;
 
     @ManyToMany
     @JoinTable(

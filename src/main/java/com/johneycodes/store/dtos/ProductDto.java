@@ -1,12 +1,14 @@
 package com.johneycodes.store.dtos;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 
 @AllArgsConstructor
-@Getter
+@Data
+@ToString
 public class ProductDto {
     private Long id;
     private String name;

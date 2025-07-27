@@ -63,7 +63,7 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
         userMapper.updateUser(request, user);
-        user = userRepository.save(user);
+         userRepository.save(user);
 
         return ResponseEntity.ok(userMapper.toUserDto(user));
     }

@@ -71,4 +71,15 @@ public class CartController {
 
         return ResponseEntity.created(uri).body(cartItemDto);
     }
+
+    @GetMapping("{cartId}")
+    public ResponseEntity<CartDto> getCart(@PathVariable UUID cartId){
+        var cart = cartRepository.findById(cartId).orElse(null);
+        if(cart == null){
+            return ResponseEntity.notFound().build();
+        }
+        var  cartDto = cartMapper.toDto(cart);
+
+        return ResponseEntity.ok(cartDto);
+    }
 }

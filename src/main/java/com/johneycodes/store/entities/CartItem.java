@@ -3,7 +3,8 @@ package com.johneycodes.store.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.ColumnDefault;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -12,7 +13,7 @@ import org.hibernate.annotations.ColumnDefault;
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
@@ -23,8 +24,12 @@ public class CartItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @ColumnDefault("1")
+
     @Column(name = "quantity")
     private Integer quantity;
+
+    public BigDecimal getTotalPrice(){
+        return product.getPrice().multiply(BigDecimal.valueOf(quantity));
+    }
 
 }

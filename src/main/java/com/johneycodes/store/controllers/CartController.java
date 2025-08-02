@@ -5,7 +5,6 @@ import com.johneycodes.store.dtos.CartDto;
 import com.johneycodes.store.dtos.CartItemDto;
 import com.johneycodes.store.dtos.updateCartItemDto;
 import com.johneycodes.store.entities.Cart;
-import com.johneycodes.store.entities.CartItem;
 import com.johneycodes.store.mappers.CartMapper;
 import com.johneycodes.store.repositories.CartRepository;
 import com.johneycodes.store.repositories.ProductRepository;
@@ -14,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -49,17 +47,7 @@ public class CartController {
             return ResponseEntity.badRequest().build();
         }
 
-        var cartItem = cart.getCartItem(product.getId());
-
-        if(cartItem != null){
-            cartItem.setQuantity(cartItem.getQuantity() + 1);
-        }else{
-            cartItem = new CartItem();
-            cartItem.setProduct(product);
-            cartItem.setQuantity(1);
-            cartItem.setCart(cart);
-            cart.getCartItems().add(cartItem);
-        }
+        var cartItem = cart.addCartItem(product);
 
         cartRepository.save(cart);
 

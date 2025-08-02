@@ -38,4 +38,20 @@ public class Cart {
                 .orElse(null);
     }
 
+    public CartItem addCartItem(Product product){
+        var cartItem = getCartItem(product.getId());
+
+        if(cartItem != null){
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+        }else{
+            cartItem = new CartItem();
+            cartItem.setProduct(product);
+            cartItem.setQuantity(1);
+            cartItem.setCart(this);
+            cartItems.add(cartItem);
+        }
+
+        return cartItem;
+    }
+
 }

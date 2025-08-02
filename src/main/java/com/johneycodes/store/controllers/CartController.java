@@ -3,6 +3,7 @@ package com.johneycodes.store.controllers;
 import com.johneycodes.store.dtos.AddItemToCartRequest;
 import com.johneycodes.store.dtos.CartDto;
 import com.johneycodes.store.dtos.CartItemDto;
+import com.johneycodes.store.dtos.updateCartItemDto;
 import com.johneycodes.store.entities.Cart;
 import com.johneycodes.store.entities.CartItem;
 import com.johneycodes.store.mappers.CartMapper;
@@ -48,10 +49,7 @@ public class CartController {
             return ResponseEntity.badRequest().build();
         }
 
-        var cartItem = cart.getCartItems().stream().
-                filter(item -> item.getProduct().getId().equals(product.getId()))
-                .findFirst()
-                .orElse(null);
+        var cartItem = cart.getCartItem(product.getId());
 
         if(cartItem != null){
             cartItem.setQuantity(cartItem.getQuantity() + 1);
@@ -84,16 +82,13 @@ public class CartController {
     }
 
     @PutMapping("{cartId}/items/{productId}")
-    public ResponseEntity<CartItemDto> updateItem(@PathVariable UUID cartId,@PathVariable Long productId,@RequestBody CartItemDto request){
+    public ResponseEntity<CartItemDto> updateItem(@PathVariable UUID cartId,@PathVariable Long productId,@RequestBody updateCartItemDto request){
         var cart = cartRepository.getCartWithItems(cartId).orElse(null);
         if(cart == null){
             return ResponseEntity.notFound().build();
         }
 
-        var cartItem = cart.getCartItems().stream()
-                .filter(item -> item.getProduct().getId().equals(productId))
-                .findFirst()
-                .orElse(null);
+        var cartItem = cart.getCartItem(productId);
 
         if(cartItem == null){
             return ResponseEntity.notFound().build();

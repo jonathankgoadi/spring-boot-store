@@ -31,4 +31,11 @@ public class Cart {
         return cartItems.stream().map(CartItem::getTotalPrice).reduce(BigDecimal.ZERO,BigDecimal::add);
     }
 
+    public CartItem getCartItem(Long productId){
+        return cartItems.stream()
+                .filter(item -> item.getProduct().getId().equals(productId))
+                .findFirst()
+                .orElse(null);
+    }
+
 }

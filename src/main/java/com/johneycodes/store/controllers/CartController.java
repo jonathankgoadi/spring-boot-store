@@ -23,6 +23,7 @@ public class CartController {
     private CartMapper cartMapper;
     private ProductRepository productRepository;
 
+
     @PostMapping
     public ResponseEntity<CartDto> createCart(UriComponentsBuilder uriBuilder){
         var cart = new Cart();
@@ -83,11 +84,22 @@ public class CartController {
         }else{
             cartItem.setQuantity(request.getQuantity());
         }
-
-
         cartRepository.save(cart);
 
-
         return ResponseEntity.ok(cartMapper.toDto(cartItem));
+    }
+
+    @DeleteMapping("{cartId}/items/{productId}")
+    public ResponseEntity<Void> removeItem(@PathVariable UUID cartId,@PathVariable Long productId){
+        var cart = cartRepository.getCartWithItems(cartId).orElse(null);
+        if(cart == null){
+            return ResponseEntity.notFound().build();
+        }
+
+        cart.removeItem(productId);
+
+       cartRepository.save(cart);
+
+        return ResponseEntity.noContent().build();
     }
 }

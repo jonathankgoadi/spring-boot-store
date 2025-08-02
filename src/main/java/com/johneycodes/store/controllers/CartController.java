@@ -9,11 +9,11 @@ import com.johneycodes.store.mappers.CartMapper;
 import com.johneycodes.store.repositories.CartRepository;
 import com.johneycodes.store.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -81,5 +81,30 @@ public class CartController {
         var  cartDto = cartMapper.toDto(cart);
 
         return ResponseEntity.ok(cartDto);
+    }
+
+    @PutMapping("{cartId}/items/{productId}")
+    public ResponseEntity<CartItemDto> updateItem(@PathVariable UUID cartId,@PathVariable Long productId,@RequestBody CartItemDto request){
+        var cart = cartRepository.getCartWithItems(cartId).orElse(null);
+        if(cart == null){
+            return ResponseEntity.notFound().build();
+        }
+
+        var cartItem = cart.getCartItems().stream()
+                .filter(item -> item.getProduct().getId().equals(productId))
+                .findFirst()
+                .orElse(null);
+
+        if(cartItem == null){
+            return ResponseEntity.notFound().build();
+        }else{
+            cartItem.setQuantity(request.getQuantity());
+        }
+
+
+        cartRepository.save(cart);
+
+
+        return ResponseEntity.ok(cartMapper.toDto(cartItem));
     }
 }

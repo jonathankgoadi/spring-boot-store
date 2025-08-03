@@ -6,15 +6,15 @@ import com.johneycodes.store.dtos.UserDto;
 import com.johneycodes.store.entities.User;
 import com.johneycodes.store.mappers.UserMapper;
 import com.johneycodes.store.repositories.UserRepository;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -47,7 +47,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody RegisterUserRequest request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<UserDto> createUser(@RequestBody @Valid RegisterUserRequest request, UriComponentsBuilder uriBuilder) {
         var user = userMapper.toEntity(request);
         user = userRepository.save(user);
 
@@ -80,4 +80,5 @@ public class UserController {
         return ResponseEntity.noContent().build();
 
     }
+
 }

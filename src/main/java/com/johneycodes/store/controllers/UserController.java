@@ -3,19 +3,16 @@ package com.johneycodes.store.controllers;
 import com.johneycodes.store.dtos.RegisterUserRequest;
 import com.johneycodes.store.dtos.UpdateUserRequest;
 import com.johneycodes.store.dtos.UserDto;
-import com.johneycodes.store.entities.User;
 import com.johneycodes.store.mappers.UserMapper;
 import com.johneycodes.store.repositories.UserRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -47,7 +44,12 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> createUser(@RequestBody @Valid RegisterUserRequest request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<?> createUser(@RequestBody @Valid RegisterUserRequest request, UriComponentsBuilder uriBuilder) {
+        if(userRepository.existsByEmail(request.getEmail())){
+            return ResponseEntity.badRequest().body(
+                    Map.of("email","email already registered")
+            );
+        }
         var user = userMapper.toEntity(request);
         user = userRepository.save(user);
 

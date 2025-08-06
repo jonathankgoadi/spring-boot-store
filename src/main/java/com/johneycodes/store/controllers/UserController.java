@@ -3,11 +3,13 @@ package com.johneycodes.store.controllers;
 import com.johneycodes.store.dtos.RegisterUserRequest;
 import com.johneycodes.store.dtos.UpdateUserRequest;
 import com.johneycodes.store.dtos.UserDto;
+import com.johneycodes.store.dtos.UserLoginRequest;
 import com.johneycodes.store.mappers.UserMapper;
 import com.johneycodes.store.repositories.UserRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +19,7 @@ import java.util.*;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("users")
+@RequestMapping({"users","auth"})
 public class UserController {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
@@ -87,5 +89,7 @@ public class UserController {
         return ResponseEntity.noContent().build();
 
     }
+
+
 
 }

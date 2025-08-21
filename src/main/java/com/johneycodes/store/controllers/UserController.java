@@ -4,6 +4,7 @@ import com.johneycodes.store.dtos.RegisterUserRequest;
 import com.johneycodes.store.dtos.UpdateUserRequest;
 import com.johneycodes.store.dtos.UserDto;
 import com.johneycodes.store.dtos.UserLoginRequest;
+import com.johneycodes.store.entities.Role;
 import com.johneycodes.store.mappers.UserMapper;
 import com.johneycodes.store.repositories.UserRepository;
 import jakarta.validation.Valid;
@@ -55,13 +56,14 @@ public class UserController {
             );
         }
         var user = userMapper.toEntity(request);
-
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Role.USER);
 
         user = userRepository.save(user);
 
         var userDto = userMapper.toUserDto(user);
         var uri = uriBuilder.path("/users/{id}").buildAndExpand(userDto.getId()).toUri();
+
         return ResponseEntity.created(uri).body(userDto);
     }
 

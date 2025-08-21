@@ -3,20 +3,19 @@ package com.johneycodes.store.controllers;
 import com.johneycodes.store.dtos.RegisterUserRequest;
 import com.johneycodes.store.dtos.UpdateUserRequest;
 import com.johneycodes.store.dtos.UserDto;
-import com.johneycodes.store.dtos.UserLoginRequest;
 import com.johneycodes.store.entities.Role;
 import com.johneycodes.store.mappers.UserMapper;
 import com.johneycodes.store.repositories.UserRepository;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
 
 @AllArgsConstructor
 @RestController

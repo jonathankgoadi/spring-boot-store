@@ -55,7 +55,7 @@ public class JwtService {
                 .getPayload();
     }
 
-    public Long getIdFromToken(String token){
+    public Long getUserIdFromToken(String token){
         return Long.valueOf(getClaims(token).getSubject()) ;
     }
 }

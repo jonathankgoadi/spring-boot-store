@@ -28,7 +28,8 @@ public class Order {
 
 
     @Column(name = "status")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
 
     @Column(name = "created_at")

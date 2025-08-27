@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 public class OrderItem {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -38,4 +39,15 @@ public class OrderItem {
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+
+                ", product=" + product +
+                ", unitPrice=" + unitPrice +
+                ", quantity=" + quantity +
+                ", totalPrice=" + totalPrice +
+                '}';
+    }
 }

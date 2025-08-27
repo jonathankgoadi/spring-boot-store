@@ -9,6 +9,7 @@ import org.hibernate.annotations.ColumnDefault;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ import java.util.Set;
 public class Order {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
@@ -32,14 +34,25 @@ public class Order {
     private OrderStatus status;
 
 
-    @Column(name = "created_at")
-    private Instant createdAt;
+    @Column(name = "created_at",insertable = false, updatable = false)
+    private LocalDate createdAt;
 
 
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.PERSIST)
     private Set<OrderItem> orderItems = new LinkedHashSet<>();
 
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", status=" + status +
+                ", createdAt=" + createdAt +
+                ", totalPrice=" + totalPrice +
+                ", orderItems=" + orderItems +
+                '}';
+    }
 }

@@ -1,16 +1,21 @@
 package com.johneycodes.store.dtos;
 
-import com.johneycodes.store.entities.Product;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
+@AllArgsConstructor
+@Data
+@ToString
 public class OrderDto {
     private String id;
     private String status;
-    private Instant createdAt;
-    private List<CartItemDto> items = new ArrayList<>();
-    private BigDecimal totalPrice = BigDecimal.ZERO;
+    private LocalDate createdAt;
+    private List<OrderItemDto> items ;
+    private BigDecimal totalPrice ;
 }

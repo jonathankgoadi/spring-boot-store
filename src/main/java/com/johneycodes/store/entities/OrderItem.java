@@ -2,10 +2,12 @@ package com.johneycodes.store.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@NoArgsConstructor
 @Getter
 @Setter
 @Entity
@@ -38,15 +40,13 @@ public class OrderItem {
     @Column(name = "total_price")
     private BigDecimal totalPrice;
 
-    @Override
-    public String toString() {
-        return "OrderItem{" +
-                "id=" + id +
-
-                ", product=" + product +
-                ", unitPrice=" + unitPrice +
-                ", quantity=" + quantity +
-                ", totalPrice=" + totalPrice +
-                '}';
+    public OrderItem(Order order, Product product, Integer quantity) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+        this.unitPrice = product.getPrice();
+        this.totalPrice = unitPrice.multiply(BigDecimal.valueOf(quantity));
     }
+
+
 }

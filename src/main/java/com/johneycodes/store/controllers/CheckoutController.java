@@ -2,6 +2,7 @@ package com.johneycodes.store.controllers;
 
 import com.johneycodes.store.dtos.CheckoutRequestDto;
 import com.johneycodes.store.dtos.CheckoutResponse;
+import com.johneycodes.store.dtos.ErrorDto;
 import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.entities.OrderItem;
 import com.johneycodes.store.entities.OrderStatus;
@@ -31,30 +32,18 @@ public class CheckoutController {
         var cart = cartRepository.getCartWithItems(request.getCartId()).orElse(null);
         if(cart == null) {
             return ResponseEntity.badRequest().body(
-                    Map.of("error","cart doesn't exist")
+                    new ErrorDto("cart doesn't exist")
             );
         }
 
         if(cart.getCartItems().isEmpty()){
             return ResponseEntity.badRequest().body(
-                    Map.of("error","Cart is empty")
+                    new ErrorDto("Cart is empty")
+
             );
         }
 
-        var order = new Order();
-        order.setTotalPrice(cart.getTotalPrice());
-        order.setStatus(OrderStatus.PENDING);
-        order.setCustomer(authService.getCurrentUser());
-
-        cart.getCartItems().forEach(item -> {
-            var orderItem = new OrderItem();
-            orderItem.setOrder(order);
-            orderItem.setProduct(item.getProduct());
-            orderItem.setQuantity(item.getQuantity());
-            orderItem.setUnitPrice(item.getProduct().getPrice());
-            orderItem.setTotalPrice(item.getTotalPrice());
-            order.getOrderItems().add(orderItem);
-        });
+        var order = Order.fromCart(cart, authService.getCurrentUser());
 
         orderRepository.save(order);
 

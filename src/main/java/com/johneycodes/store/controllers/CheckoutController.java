@@ -19,7 +19,7 @@ import java.util.Map;
 
 @AllArgsConstructor
 @RestController
-public class ChectoutController {
+public class CheckoutController {
 
     private final CartRepository cartRepository;
     private final AuthService authService;

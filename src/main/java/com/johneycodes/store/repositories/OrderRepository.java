@@ -2,10 +2,20 @@ package com.johneycodes.store.repositories;
 
 import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.entities.User;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
-    List<Order> findByCustomer(User user);
+    @EntityGraph(attributePaths = {"orderItems.product"})
+    @Query("select o from Order o where o.customer = :customer")
+    List<Order> getOrdersByCustomer(@Param("customer") User customer);
+
+    @EntityGraph(attributePaths = {"orderItems.product"})
+    @Query("select o from Order o where o.id = :orderId")
+    Optional<Order> getOrderWithItems(@Param("orderId") Long orderId);
 }

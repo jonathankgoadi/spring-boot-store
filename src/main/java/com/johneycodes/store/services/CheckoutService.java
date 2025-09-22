@@ -6,6 +6,7 @@ import com.johneycodes.store.dtos.ErrorDto;
 import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.exceptions.CartEmptyException;
 import com.johneycodes.store.exceptions.CartNotFoundException;
+import com.johneycodes.store.exceptions.PaymentException;
 import com.johneycodes.store.repositories.CartRepository;
 import com.johneycodes.store.repositories.OrderRepository;
 import com.stripe.exception.StripeException;
@@ -27,12 +28,11 @@ public class CheckoutService {
     private final OrderRepository orderRepository;
     private final AuthService authService;
     private final CartService cartService;
+    private final PaymentGateway paymentGateway;
 
-    @Value("${websiteUrl}")
-    private String websiteUrl;
 
     @Transactional
-    public CheckoutResponse checkout(CheckoutRequestDto request) throws StripeException {
+    public CheckoutResponse checkout(CheckoutRequestDto request)  {
         var cart = cartRepository.getCartWithItems(request.getCartId()).orElse(null);
         if(cart == null) {
             throw new CartNotFoundException();
@@ -47,38 +47,12 @@ public class CheckoutService {
         orderRepository.save(order);
 
        try {
-           //create a checkout session
-           var builder = SessionCreateParams.builder()
-                   .setMode(SessionCreateParams.Mode.PAYMENT)
-                   .setSuccessUrl(websiteUrl + "/checkout-success?orderId=" + order.getId())
-                   .setCancelUrl(websiteUrl + "/checkout-cancel");
+           var session =  paymentGateway.createCheckoutSession(order);
+            cartService.clearCart(cart.getId());
 
-           order.getOrderItems().forEach(item -> {
-               var lineItem = SessionCreateParams.LineItem.builder()
-                       .setQuantity(Long.valueOf(item.getQuantity()))
-                       .setPriceData(
-                               SessionCreateParams.LineItem.PriceData.builder()
-                                       .setCurrency("zar")
-                                       .setUnitAmountDecimal(item.getUnitPrice().multiply(BigDecimal.valueOf(100)))
-                                       .setProductData(
-                                               SessionCreateParams.LineItem.PriceData.ProductData.builder()
-                                                       .setName(item.getProduct().getName())
-                                                       .build()
-                                       ).build()
-                       ).build();
+           return new CheckoutResponse(order.getId(), session.getCheckoutUrl());
 
-               builder.addLineItem(lineItem);
-
-           });
-
-           var session = Session.create( builder.build());
-
-
-
-           cartService.clearCart(cart.getId());
-
-           return new CheckoutResponse(order.getId(), session.getUrl());
-       }catch(StripeException ex){
+       }catch(PaymentException ex){
            orderRepository.delete(order);
            throw ex;
        }

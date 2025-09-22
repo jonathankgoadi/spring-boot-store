@@ -5,6 +5,7 @@ import com.johneycodes.store.dtos.CheckoutResponse;
 import com.johneycodes.store.dtos.ErrorDto;
 import com.johneycodes.store.exceptions.CartEmptyException;
 import com.johneycodes.store.exceptions.CartNotFoundException;
+import com.johneycodes.store.exceptions.PaymentException;
 import com.johneycodes.store.services.CheckoutService;
 import com.stripe.exception.StripeException;
 import lombok.AllArgsConstructor;
@@ -22,17 +23,15 @@ public class CheckoutController {
     private final CheckoutService checkoutService;
 
     @PostMapping("/checkout")
-    public ResponseEntity<?> checkout(@RequestBody CheckoutRequestDto request) {
-        try {
-
-        return ResponseEntity.ok( checkoutService.checkout(request));
-
-        } catch (StripeException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ErrorDto("Error creating a checkout session"));
-        }
+    public CheckoutResponse checkout(@RequestBody CheckoutRequestDto request) {
+        return checkoutService.checkout(request);
     }
 
+    @ExceptionHandler(PaymentException.class)
+    public ResponseEntity<ErrorDto> handlePaymentException() {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new ErrorDto("Error creating a checkout session"));
+    }
     @ExceptionHandler({CartNotFoundException.class, CartEmptyException.class})
     public ResponseEntity<ErrorDto> handleException(Exception ex) {
         return ResponseEntity.badRequest().body(new ErrorDto(ex.getMessage()));

@@ -6,7 +6,9 @@ import com.johneycodes.store.dtos.ErrorDto;
 import com.johneycodes.store.exceptions.CartEmptyException;
 import com.johneycodes.store.exceptions.CartNotFoundException;
 import com.johneycodes.store.services.CheckoutService;
+import com.stripe.exception.StripeException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +22,15 @@ public class CheckoutController {
     private final CheckoutService checkoutService;
 
     @PostMapping("/checkout")
-    public CheckoutResponse checkout(@RequestBody CheckoutRequestDto request) {
-        return checkoutService.checkout(request);
+    public ResponseEntity<?> checkout(@RequestBody CheckoutRequestDto request) {
+        try {
+
+        return ResponseEntity.ok( checkoutService.checkout(request));
+
+        } catch (StripeException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ErrorDto("Error creating a checkout session"));
+        }
     }
 
     @ExceptionHandler({CartNotFoundException.class, CartEmptyException.class})

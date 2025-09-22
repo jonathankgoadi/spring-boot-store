@@ -1,20 +1,13 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.payments;
 
-import com.johneycodes.store.dtos.CheckoutRequestDto;
-import com.johneycodes.store.dtos.CheckoutResponse;
 import com.johneycodes.store.entities.Order;
-import com.johneycodes.store.entities.PaymentStatus;
 import com.johneycodes.store.exceptions.CartEmptyException;
 import com.johneycodes.store.exceptions.CartNotFoundException;
-import com.johneycodes.store.exceptions.PaymentException;
 import com.johneycodes.store.repositories.CartRepository;
 import com.johneycodes.store.repositories.OrderRepository;
-import com.stripe.exception.SignatureVerificationException;
-import com.stripe.model.PaymentIntent;
-import com.stripe.net.Webhook;
+import com.johneycodes.store.services.AuthService;
+import com.johneycodes.store.services.CartService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,4 +1,4 @@
-package com.johneycodes.store.config;
+package com.johneycodes.store.payments;
 
 
 import com.stripe.Stripe;

@@ -1,16 +1,9 @@
-package com.johneycodes.store.controllers;
+package com.johneycodes.store.payments;
 
-import com.johneycodes.store.dtos.CheckoutRequestDto;
-import com.johneycodes.store.dtos.CheckoutResponse;
 import com.johneycodes.store.dtos.ErrorDto;
 import com.johneycodes.store.exceptions.CartEmptyException;
 import com.johneycodes.store.exceptions.CartNotFoundException;
-import com.johneycodes.store.exceptions.PaymentException;
-import com.johneycodes.store.repositories.OrderRepository;
-import com.johneycodes.store.services.CheckoutService;
-import com.johneycodes.store.services.WebhookRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

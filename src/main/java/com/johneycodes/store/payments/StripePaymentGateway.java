@@ -1,9 +1,8 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.payments;
 
 import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.entities.OrderItem;
 import com.johneycodes.store.entities.PaymentStatus;
-import com.johneycodes.store.exceptions.PaymentException;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Event;
@@ -12,8 +11,6 @@ import com.stripe.model.checkout.Session;
 import com.stripe.net.Webhook;
 import com.stripe.param.checkout.SessionCreateParams;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

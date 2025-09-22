@@ -1,4 +1,4 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.payments;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

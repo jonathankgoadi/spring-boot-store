@@ -1,5 +1,6 @@
 package com.johneycodes.store.entities;
 
+import com.johneycodes.store.products.Product;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

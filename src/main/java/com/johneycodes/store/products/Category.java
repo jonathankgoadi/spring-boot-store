@@ -1,4 +1,4 @@
-package com.johneycodes.store.entities;
+package com.johneycodes.store.products;
 
 import jakarta.persistence.*;
 import lombok.Getter;

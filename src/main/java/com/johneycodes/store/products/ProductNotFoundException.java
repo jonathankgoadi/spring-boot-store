@@ -1,4 +1,4 @@
-package com.johneycodes.store.exceptions;
+package com.johneycodes.store.products;
 
 public class ProductNotFoundException extends RuntimeException{
 }

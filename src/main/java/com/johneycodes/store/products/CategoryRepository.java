@@ -1,6 +1,5 @@
-package com.johneycodes.store.repositories;
+package com.johneycodes.store.products;
 
-import com.johneycodes.store.entities.Category;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CategoryRepository extends CrudRepository<Category, Byte> {

@@ -1,11 +1,5 @@
-package com.johneycodes.store.controllers;
+package com.johneycodes.store.products;
 
-import com.johneycodes.store.dtos.ProductDto;
-import com.johneycodes.store.dtos.RegisterProductRequest;
-import com.johneycodes.store.entities.Product;
-import com.johneycodes.store.mappers.ProductMapper;
-import com.johneycodes.store.repositories.CategoryRepository;
-import com.johneycodes.store.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

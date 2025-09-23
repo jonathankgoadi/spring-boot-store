@@ -1,4 +1,4 @@
-package com.johneycodes.store.dtos;
+package com.johneycodes.store.products;
 
 import lombok.Data;
 import lombok.ToString;

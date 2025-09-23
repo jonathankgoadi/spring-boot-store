@@ -1,8 +1,5 @@
-package com.johneycodes.store.mappers;
+package com.johneycodes.store.products;
 
-import com.johneycodes.store.dtos.ProductDto;
-
-import com.johneycodes.store.entities.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

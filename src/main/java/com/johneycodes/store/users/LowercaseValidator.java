@@ -1,9 +1,7 @@
-package com.johneycodes.store.validation;
+package com.johneycodes.store.users;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-
-import java.util.Locale;
 
 public class LowercaseValidator implements ConstraintValidator<Lowercase,String> {
     @Override

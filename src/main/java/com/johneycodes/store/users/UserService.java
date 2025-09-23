@@ -1,6 +1,5 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.users;
 
-import com.johneycodes.store.repositories.UserRepository;
 import java.util.Collections;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.User;

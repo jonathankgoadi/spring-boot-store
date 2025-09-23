@@ -1,4 +1,4 @@
-package com.johneycodes.store.dtos;
+package com.johneycodes.store.users;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

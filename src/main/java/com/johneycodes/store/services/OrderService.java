@@ -2,7 +2,7 @@ package com.johneycodes.store.services;
 
 import com.johneycodes.store.dtos.OrderDto;
 import com.johneycodes.store.entities.Order;
-import com.johneycodes.store.entities.User;
+import com.johneycodes.store.users.User;
 import com.johneycodes.store.exceptions.OrderNotFoundException;
 import com.johneycodes.store.mappers.OrderMapper;
 import com.johneycodes.store.repositories.OrderRepository;

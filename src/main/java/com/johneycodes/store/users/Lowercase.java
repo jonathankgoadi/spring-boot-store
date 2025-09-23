@@ -1,4 +1,4 @@
-package com.johneycodes.store.validation;
+package com.johneycodes.store.users;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

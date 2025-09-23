@@ -1,9 +1,8 @@
 package com.johneycodes.store.services;
 
-import com.johneycodes.store.entities.User;
-import com.johneycodes.store.repositories.UserRepository;
+import com.johneycodes.store.users.User;
+import com.johneycodes.store.users.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 

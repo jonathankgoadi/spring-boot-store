@@ -1,6 +1,5 @@
-package com.johneycodes.store.repositories;
+package com.johneycodes.store.users;
 
-import com.johneycodes.store.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

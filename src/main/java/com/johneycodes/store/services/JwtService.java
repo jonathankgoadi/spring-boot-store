@@ -1,8 +1,7 @@
 package com.johneycodes.store.services;
 
 import com.johneycodes.store.config.JwtConfig;
-import com.johneycodes.store.entities.Role;
-import com.johneycodes.store.entities.User;
+import com.johneycodes.store.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;

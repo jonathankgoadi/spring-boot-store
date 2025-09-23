@@ -1,6 +1,6 @@
-package com.johneycodes.store.dtos;
+package com.johneycodes.store.users;
 
-import com.johneycodes.store.validation.Lowercase;
+import com.johneycodes.store.services.Lowercase;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

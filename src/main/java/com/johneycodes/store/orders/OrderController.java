@@ -1,10 +1,7 @@
-package com.johneycodes.store.controllers;
+package com.johneycodes.store.orders;
 
 import com.johneycodes.store.dtos.ErrorDto;
-import com.johneycodes.store.dtos.OrderDto;
-import com.johneycodes.store.exceptions.OrderNotFoundException;
 import com.johneycodes.store.auth.AuthService;
-import com.johneycodes.store.services.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

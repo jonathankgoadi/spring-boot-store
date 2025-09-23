@@ -1,5 +1,6 @@
-package com.johneycodes.store.entities;
+package com.johneycodes.store.orders;
 
+import com.johneycodes.store.carts.Cart;
 import com.johneycodes.store.users.User;
 import jakarta.persistence.*;
 import lombok.Getter;

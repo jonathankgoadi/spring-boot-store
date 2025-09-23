@@ -1,12 +1,7 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.orders;
 
 import com.johneycodes.store.auth.AuthService;
-import com.johneycodes.store.dtos.OrderDto;
-import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.users.User;
-import com.johneycodes.store.exceptions.OrderNotFoundException;
-import com.johneycodes.store.mappers.OrderMapper;
-import com.johneycodes.store.repositories.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;

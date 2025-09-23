@@ -1,12 +1,6 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.carts;
 
-import com.johneycodes.store.dtos.CartDto;
-import com.johneycodes.store.dtos.CartItemDto;
-import com.johneycodes.store.entities.Cart;
-import com.johneycodes.store.exceptions.CartNotFoundException;
 import com.johneycodes.store.products.ProductNotFoundException;
-import com.johneycodes.store.mappers.CartMapper;
-import com.johneycodes.store.repositories.CartRepository;
 import com.johneycodes.store.products.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

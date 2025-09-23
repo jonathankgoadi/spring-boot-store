@@ -1,6 +1,5 @@
-package com.johneycodes.store.repositories;
+package com.johneycodes.store.carts;
 
-import com.johneycodes.store.entities.Cart;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.support.JpaRepositoryImplementation;

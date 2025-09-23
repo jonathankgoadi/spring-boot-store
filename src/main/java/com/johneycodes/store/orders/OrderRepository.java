@@ -1,6 +1,5 @@
-package com.johneycodes.store.repositories;
+package com.johneycodes.store.orders;
 
-import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.users.User;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;

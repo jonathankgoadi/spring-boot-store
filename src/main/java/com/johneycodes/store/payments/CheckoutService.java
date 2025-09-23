@@ -1,12 +1,12 @@
 package com.johneycodes.store.payments;
 
-import com.johneycodes.store.entities.Order;
-import com.johneycodes.store.exceptions.CartEmptyException;
-import com.johneycodes.store.exceptions.CartNotFoundException;
-import com.johneycodes.store.repositories.CartRepository;
-import com.johneycodes.store.repositories.OrderRepository;
+import com.johneycodes.store.orders.Order;
+import com.johneycodes.store.carts.CartEmptyException;
+import com.johneycodes.store.carts.CartNotFoundException;
+import com.johneycodes.store.carts.CartRepository;
+import com.johneycodes.store.orders.OrderRepository;
 import com.johneycodes.store.auth.AuthService;
-import com.johneycodes.store.services.CartService;
+import com.johneycodes.store.carts.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,6 +1,5 @@
 package com.johneycodes.store.users;
 
-import com.johneycodes.store.entities.Role;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Sort;

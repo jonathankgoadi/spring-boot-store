@@ -1,4 +1,4 @@
-package com.johneycodes.store.entities;
+package com.johneycodes.store.users;
 
 public enum Role {
     USER,

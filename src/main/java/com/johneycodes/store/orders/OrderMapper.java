@@ -1,8 +1,6 @@
-package com.johneycodes.store.mappers;
+package com.johneycodes.store.orders;
 
 
-import com.johneycodes.store.dtos.OrderDto;
-import com.johneycodes.store.entities.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

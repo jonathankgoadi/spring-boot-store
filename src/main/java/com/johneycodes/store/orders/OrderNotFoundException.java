@@ -1,4 +1,4 @@
-package com.johneycodes.store.exceptions;
+package com.johneycodes.store.orders;
 
 public class OrderNotFoundException extends RuntimeException {
     public OrderNotFoundException() {

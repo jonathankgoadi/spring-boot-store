@@ -1,8 +1,8 @@
 package com.johneycodes.store.payments;
 
 import com.johneycodes.store.dtos.ErrorDto;
-import com.johneycodes.store.exceptions.CartEmptyException;
-import com.johneycodes.store.exceptions.CartNotFoundException;
+import com.johneycodes.store.carts.CartEmptyException;
+import com.johneycodes.store.carts.CartNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

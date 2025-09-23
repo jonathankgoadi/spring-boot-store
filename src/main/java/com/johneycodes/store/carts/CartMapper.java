@@ -1,9 +1,5 @@
-package com.johneycodes.store.mappers;
+package com.johneycodes.store.carts;
 
-import com.johneycodes.store.dtos.CartDto;
-import com.johneycodes.store.dtos.CartItemDto;
-import com.johneycodes.store.entities.Cart;
-import com.johneycodes.store.entities.CartItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

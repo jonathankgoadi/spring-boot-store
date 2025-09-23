@@ -1,6 +1,6 @@
 package com.johneycodes.store.auth;
 
-import com.johneycodes.store.entities.Role;
+import com.johneycodes.store.users.Role;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 

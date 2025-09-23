@@ -1,6 +1,6 @@
 package com.johneycodes.store.payments;
 
-import com.johneycodes.store.entities.Order;
+import com.johneycodes.store.orders.Order;
 
 import java.util.Optional;
 

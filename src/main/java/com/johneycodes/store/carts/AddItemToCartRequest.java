@@ -1,4 +1,4 @@
-package com.johneycodes.store.dtos;
+package com.johneycodes.store.carts;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

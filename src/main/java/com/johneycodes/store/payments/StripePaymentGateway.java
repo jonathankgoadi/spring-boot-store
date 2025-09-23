@@ -1,8 +1,8 @@
 package com.johneycodes.store.payments;
 
-import com.johneycodes.store.entities.Order;
-import com.johneycodes.store.entities.OrderItem;
-import com.johneycodes.store.entities.PaymentStatus;
+import com.johneycodes.store.orders.Order;
+import com.johneycodes.store.orders.OrderItem;
+import com.johneycodes.store.orders.PaymentStatus;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Event;

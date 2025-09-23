@@ -1,6 +1,6 @@
 package com.johneycodes.store.payments;
 
-import com.johneycodes.store.entities.PaymentStatus;
+import com.johneycodes.store.orders.PaymentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

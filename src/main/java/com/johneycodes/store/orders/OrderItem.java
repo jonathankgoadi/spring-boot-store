@@ -1,4 +1,4 @@
-package com.johneycodes.store.entities;
+package com.johneycodes.store.orders;
 
 import com.johneycodes.store.products.Product;
 import jakarta.persistence.*;

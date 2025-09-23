@@ -1,4 +1,4 @@
-package com.johneycodes.store.entities;
+package com.johneycodes.store.orders;
 
 public enum PaymentStatus {
     PENDING,

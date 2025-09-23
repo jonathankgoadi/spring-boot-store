@@ -1,12 +1,6 @@
-package com.johneycodes.store.controllers;
+package com.johneycodes.store.carts;
 
-import com.johneycodes.store.dtos.AddItemToCartRequest;
-import com.johneycodes.store.dtos.CartDto;
-import com.johneycodes.store.dtos.CartItemDto;
-import com.johneycodes.store.dtos.updateCartItemDto;
-import com.johneycodes.store.exceptions.CartNotFoundException;
 import com.johneycodes.store.products.ProductNotFoundException;
-import com.johneycodes.store.services.CartService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

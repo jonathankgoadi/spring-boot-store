@@ -1,4 +1,4 @@
-package com.johneycodes.store.exceptions;
+package com.johneycodes.store.carts;
 
 public class CartEmptyException extends RuntimeException {
     public CartEmptyException() {

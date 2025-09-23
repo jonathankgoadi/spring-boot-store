@@ -1,7 +1,6 @@
 package com.johneycodes.store.users;
 
 import com.johneycodes.store.products.Product;
-import com.johneycodes.store.entities.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

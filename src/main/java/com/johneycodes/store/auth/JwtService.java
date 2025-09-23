@@ -1,6 +1,5 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.auth;
 
-import com.johneycodes.store.config.JwtConfig;
 import com.johneycodes.store.users.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

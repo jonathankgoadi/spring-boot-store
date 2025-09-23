@@ -5,7 +5,7 @@ import com.johneycodes.store.exceptions.CartEmptyException;
 import com.johneycodes.store.exceptions.CartNotFoundException;
 import com.johneycodes.store.repositories.CartRepository;
 import com.johneycodes.store.repositories.OrderRepository;
-import com.johneycodes.store.services.AuthService;
+import com.johneycodes.store.auth.AuthService;
 import com.johneycodes.store.services.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

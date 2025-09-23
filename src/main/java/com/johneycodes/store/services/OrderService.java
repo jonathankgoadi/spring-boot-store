@@ -1,5 +1,6 @@
 package com.johneycodes.store.services;
 
+import com.johneycodes.store.auth.AuthService;
 import com.johneycodes.store.dtos.OrderDto;
 import com.johneycodes.store.entities.Order;
 import com.johneycodes.store.users.User;

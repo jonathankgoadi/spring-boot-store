@@ -1,10 +1,10 @@
-package com.johneycodes.store.users;
+package com.johneycodes.store.auth;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class UserLoginRequest {
+public class LoginRequest {
     @NotNull(message = "email is required")
     private String email;
     @NotNull(message = "password is required")

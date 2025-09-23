@@ -1,4 +1,4 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.auth;
 
 import com.johneycodes.store.users.User;
 import com.johneycodes.store.users.UserRepository;

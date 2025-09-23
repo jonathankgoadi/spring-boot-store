@@ -1,4 +1,4 @@
-package com.johneycodes.store.services;
+package com.johneycodes.store.auth;
 
 import com.johneycodes.store.entities.Role;
 import io.jsonwebtoken.Claims;

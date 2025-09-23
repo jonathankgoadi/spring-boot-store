@@ -1,12 +1,8 @@
-package com.johneycodes.store.controllers;
+package com.johneycodes.store.auth;
 
-import com.johneycodes.store.config.JwtConfig;
-import com.johneycodes.store.dtos.JwtResponse;
 import com.johneycodes.store.users.UserDto;
-import com.johneycodes.store.users.UserLoginRequest;
 import com.johneycodes.store.users.UserMapper;
 import com.johneycodes.store.users.UserRepository;
-import com.johneycodes.store.services.JwtService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -31,7 +27,7 @@ public class AuthController {
 
 
     @PostMapping("login")
-    public ResponseEntity<JwtResponse> login(@Valid @RequestBody UserLoginRequest request, HttpServletResponse response){
+    public ResponseEntity<JwtResponse> login(@Valid @RequestBody LoginRequest request, HttpServletResponse response){
 
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(

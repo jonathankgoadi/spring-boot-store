@@ -1,7 +1,6 @@
-package com.johneycodes.store.config;
+package com.johneycodes.store.auth;
 
 import com.johneycodes.store.entities.Role;
-import com.johneycodes.store.filters.JwtAuthenticationFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;

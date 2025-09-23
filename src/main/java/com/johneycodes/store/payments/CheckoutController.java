@@ -1,6 +1,6 @@
 package com.johneycodes.store.payments;
 
-import com.johneycodes.store.dtos.ErrorDto;
+import com.johneycodes.store.common.ErrorDto;
 import com.johneycodes.store.carts.CartEmptyException;
 import com.johneycodes.store.carts.CartNotFoundException;
 import lombok.RequiredArgsConstructor;

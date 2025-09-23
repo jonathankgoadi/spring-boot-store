@@ -1,6 +1,5 @@
-package com.johneycodes.store.controllers;
+package com.johneycodes.store.common;
 
-import com.johneycodes.store.dtos.ErrorDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;

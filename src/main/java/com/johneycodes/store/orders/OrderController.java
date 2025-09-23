@@ -1,6 +1,6 @@
 package com.johneycodes.store.orders;
 
-import com.johneycodes.store.dtos.ErrorDto;
+import com.johneycodes.store.common.ErrorDto;
 import com.johneycodes.store.auth.AuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

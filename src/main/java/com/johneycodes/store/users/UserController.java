@@ -61,7 +61,7 @@ public class UserController {
     public ResponseEntity<Void> handleUserNotFound() {
         return ResponseEntity.notFound().build();
     }
-    @ExceptionHandler(AccessDeniedException.class)
+    @ExceptionHandler(DuplicateUserException.class)
     public ResponseEntity<Map<String,String>> handleDuplicateUser() {
         return ResponseEntity.badRequest().body(
                 Map.of("Email","Email is already registered")
